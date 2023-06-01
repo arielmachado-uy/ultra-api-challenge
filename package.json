@@ -1,0 +1,12 @@
+{
+  "name": "ultra_api_challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/arielmachado-uy/ultra_api_challenge.git",
+  "author": "Ariel Machado <65302822+arielma77@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^12.13.0",
+    "typescript": "^5.1.3"
+  }
+}
