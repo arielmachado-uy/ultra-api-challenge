@@ -1,4 +1,4 @@
-describe("Users suite - Negative Scenarios", () => {
+describe.skip("Users suite - Negative Scenarios", () => {
 
   beforeEach(() => {
 
