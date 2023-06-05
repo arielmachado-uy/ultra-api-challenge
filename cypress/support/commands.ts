@@ -14,7 +14,7 @@ Cypress.Commands.add('performAPIRequest', () => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer 75782cb2abeba44a7d1a9f56c587fcadcf617badd6eccceb03ce9c229dbf45b3'
+      'Authorization': 'Bearer ' + Cypress.env('api_token')
     },
     body: {}
   })

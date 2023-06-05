@@ -1,10 +1,10 @@
-describe("POC suite", () => {
+describe("Users suite - Positive Scenarios", () => {
 
   beforeEach(() => {
 
   })
 
-  it("POC performing an API request", function () {
+  it("Create new user", function () {
     cy.performAPIRequest()
     .then(response => cy.log(JSON.stringify(response.body)))
    })

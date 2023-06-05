@@ -1,4 +1,5 @@
 import { defineConfig } from "cypress";
+require('dotenv').config()
 
 module.exports = defineConfig({
   projectId: "g5ecjv",
@@ -8,6 +9,9 @@ module.exports = defineConfig({
     },
     
     setupNodeEvents(on: any, config: any) {
+      config.env.api_token = process.env.API_TOKEN
+
+      return config;
     },
   },
 });
