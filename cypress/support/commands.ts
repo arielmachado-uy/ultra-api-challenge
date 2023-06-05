@@ -12,6 +12,8 @@ declare global {
       updateUser(id: number, data: object): Cypress.Chainable<any>;
       getUsersList(): Cypress.Chainable<any>;
       findUserByEmail(users: object[], email: string): Cypress.Chainable<any>;
+      createNewUserWrongToken(data: object): Cypress.Chainable<any>;
+      createNewUserWrongUrl(data: object): Cypress.Chainable<any>;
     }
   }
 }
@@ -24,7 +26,8 @@ Cypress.Commands.add('performAPIRequest', (url: string, action: string, body?: o
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + Cypress.env('api_token')
       },
-      body: body
+      body: body,
+      failOnStatusCode: false
     })
 });
 
@@ -38,6 +41,14 @@ Cypress.Commands.add('deleteUser', (id: number) => {
 
 Cypress.Commands.add('getUserByID', (id: number) => {
   cy.performAPIRequest(Cypress.env('baseUrl') + `/${id}`, 'GET')
+});
+
+Cypress.Commands.add('updateUser', (id: number, data: object) => {
+  cy.performAPIRequest(Cypress.env('baseUrl') + `/${id}`, 'PUT', data)
+});
+
+Cypress.Commands.add('getUsersList', () => {
+  cy.performAPIRequest(Cypress.env('baseUrl'), 'GET')
 });
 
 Cypress.Commands.add('responseValidation', (response: any, status: number, schema?: JSON) => {
@@ -58,14 +69,6 @@ Cypress.Commands.add('responseValidation', (response: any, status: number, schem
   expect(originalData.status).to.be.eq(retrievedData.status);
 });
 
-Cypress.Commands.add('updateUser', (id: number, data: object) => {
-  cy.performAPIRequest(Cypress.env('baseUrl') + `/${id}`, 'PUT', data)
-});
-
-Cypress.Commands.add('getUsersList', () => {
-  cy.performAPIRequest(Cypress.env('baseUrl'), 'GET')
-});
-
 Cypress.Commands.add('findUserByEmail', (users: any[], email: string) => {
   let selecteduser;
   
@@ -76,4 +79,31 @@ Cypress.Commands.add('findUserByEmail', (users: any[], email: string) => {
   })
 
   return selecteduser;
+});
+
+// Special custom commands for negative scenarios
+Cypress.Commands.add('createNewUserWrongToken', (data: object) => {
+  cy.request({
+    url: Cypress.env('baseUrl'),
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + 'wrong_token'
+    },
+    body: data,
+    failOnStatusCode: false
+  })
+});
+
+Cypress.Commands.add('createNewUserWrongUrl', (data: object) => {
+  cy.request({
+    url: "https://gorest.co.in/public/v2/people",
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + Cypress.env('api_token')
+    },
+    body: data,
+    failOnStatusCode: false
+  })
 });
