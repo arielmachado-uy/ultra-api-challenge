@@ -6,10 +6,12 @@ declare global {
       performAPIRequest(url: string, action: string, body?: object): Cypress.Chainable<any>;
       createNewUser(data: object): Cypress.Chainable<any>;
       deleteUser(id: number): Cypress.Chainable<any>;
-      responseValidation(response: any, status: number, schema: JSON): Cypress.Chainable<any>;
+      responseValidation(response: any, status: number, schema?: JSON): Cypress.Chainable<any>;
       getUserByID(id: number): Cypress.Chainable<any>;
       checkUserData(originalData: JSON, retrievedData: JSON): null;
       updateUser(id: number, data: object): Cypress.Chainable<any>;
+      getUsersList(): Cypress.Chainable<any>;
+      findUserByEmail(users: object[], email: string): Cypress.Chainable<any>;
     }
   }
 }
@@ -38,22 +40,40 @@ Cypress.Commands.add('getUserByID', (id: number) => {
   cy.performAPIRequest(Cypress.env('baseUrl') + `/${id}`, 'GET')
 });
 
-Cypress.Commands.add('responseValidation', (response: any, status: number, schema: JSON) => {
+Cypress.Commands.add('responseValidation', (response: any, status: number, schema?: JSON) => {
   // Response status validation
   expect(response.status).to.be.eq(status);
 
-  // Response schema validation
-  const ajv = new Ajv({ allErrors: true });
-  expect(ajv.validate(schema, response.body)).to.be.true;
+  if (schema) {
+    // Response schema validation
+    const ajv = new Ajv({ allErrors: true });
+    expect(ajv.validate(schema, response.body)).to.be.true;
+  }  
 });
 
  Cypress.Commands.add('checkUserData', (originalData: any, retrievedData: any) => {
-  expect(originalData.name).to.be.eq(retrievedData.body.name);
-  expect(originalData.email).to.be.eq(retrievedData.body.email);
-  expect(originalData.gender).to.be.eq(retrievedData.body.gender);
-  expect(originalData.status).to.be.eq(retrievedData.body.status);
+  expect(originalData.name).to.be.eq(retrievedData.name);
+  expect(originalData.email).to.be.eq(retrievedData.email);
+  expect(originalData.gender).to.be.eq(retrievedData.gender);
+  expect(originalData.status).to.be.eq(retrievedData.status);
 });
 
 Cypress.Commands.add('updateUser', (id: number, data: object) => {
   cy.performAPIRequest(Cypress.env('baseUrl') + `/${id}`, 'PUT', data)
+});
+
+Cypress.Commands.add('getUsersList', () => {
+  cy.performAPIRequest(Cypress.env('baseUrl'), 'GET')
+});
+
+Cypress.Commands.add('findUserByEmail', (users: any[], email: string) => {
+  let selecteduser;
+  
+  users.forEach(user => {
+    if (user.email == email) {
+      selecteduser = user;
+    }
+  })
+
+  return selecteduser;
 });

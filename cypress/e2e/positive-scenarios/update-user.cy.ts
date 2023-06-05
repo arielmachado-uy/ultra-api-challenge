@@ -33,7 +33,7 @@ describe("Update user suite", () => {
         // Checking the newly updated user
         cy.getUserByID(userId)
         .then(response => { 
-          cy.checkUserData(this.updateUserData, response) 
+          cy.checkUserData(this.updateUserData, response.body) 
 
           // Check the response
           cy.responseValidation(response, 200, this.responseSchema);
