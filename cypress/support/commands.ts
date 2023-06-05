@@ -9,6 +9,7 @@ declare global {
       responseValidation(response: any, status: number, schema: JSON): Cypress.Chainable<any>;
       getUserByID(id: number): Cypress.Chainable<any>;
       checkUserData(originalData: JSON, retrievedData: JSON): null;
+      updateUser(id: number, data: object): Cypress.Chainable<any>;
     }
   }
 }
@@ -31,11 +32,11 @@ Cypress.Commands.add('createNewUser', (data: object) => {
 
 Cypress.Commands.add('deleteUser', (id: number) => {
   cy.performAPIRequest(Cypress.env('baseUrl') + `/${id}`, 'DELETE')
- });
+});
 
- Cypress.Commands.add('getUserByID', (id: number) => {
+Cypress.Commands.add('getUserByID', (id: number) => {
   cy.performAPIRequest(Cypress.env('baseUrl') + `/${id}`, 'GET')
- });
+});
 
 Cypress.Commands.add('responseValidation', (response: any, status: number, schema: JSON) => {
   // Response status validation
@@ -44,11 +45,15 @@ Cypress.Commands.add('responseValidation', (response: any, status: number, schem
   // Response schema validation
   const ajv = new Ajv({ allErrors: true });
   expect(ajv.validate(schema, response.body)).to.be.true;
- });
+});
 
  Cypress.Commands.add('checkUserData', (originalData: any, retrievedData: any) => {
   expect(originalData.name).to.be.eq(retrievedData.body.name);
   expect(originalData.email).to.be.eq(retrievedData.body.email);
   expect(originalData.gender).to.be.eq(retrievedData.body.gender);
   expect(originalData.status).to.be.eq(retrievedData.body.status);
- });
+});
+
+Cypress.Commands.add('updateUser', (id: number, data: object) => {
+  cy.performAPIRequest(Cypress.env('baseUrl') + `/${id}`, 'PUT', data)
+});

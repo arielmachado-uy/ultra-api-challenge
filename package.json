@@ -8,7 +8,7 @@
   "scripts": {
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "cy:ci": "cypress run --headless --record --key 45766e1e-bc5a-4126-9b2a-a598a0479b64"
+    "cy:ci": "cypress run --headless --record --key 45766e1e-bc5a-4126-9b2a-a598a0479b64 --parallel"
   },
   "devDependencies": {
     "@types/cypress-dotenv": "^2.0.0",

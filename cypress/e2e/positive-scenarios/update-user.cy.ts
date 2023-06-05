@@ -1,10 +1,11 @@
-describe("Create New User suite", () => {
+describe("Update user suite", () => {
 
   let userId: number;
 
   beforeEach(() => {
     // Loading data and storing it in an alias
     cy.fixture("json-data/new-user-data").as("newUserData");
+    cy.fixture("json-data/update-user-data").as("updateUserData");
     cy.fixture("response-schema/user-response").as("responseSchema");
   })
 
@@ -24,16 +25,19 @@ describe("Create New User suite", () => {
       // Store the value of the newly created user into a suite variable
       userId = response.body.id;
       
-      // Check the response
-      cy.responseValidation(response, 201, this.responseSchema);
-
-      // Checking the newly created user
-      cy.getUserByID(userId)
-      .then(response => { 
-        cy.checkUserData(this.newUserData, response) 
-
+      cy.updateUser(userId, this.updateUserData)
+      .then(response => {
         // Check the response
         cy.responseValidation(response, 200, this.responseSchema);
+
+        // Checking the newly updated user
+        cy.getUserByID(userId)
+        .then(response => { 
+          cy.checkUserData(this.updateUserData, response) 
+
+          // Check the response
+          cy.responseValidation(response, 200, this.responseSchema);
+        })
       })
     })
    })
