@@ -9,8 +9,6 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "types": ["cypress", "node"],
-    "paths": {
-      "@pageObjects/*": ["cypress/fixtures/page-objects/*"]
-    }
+    "paths": {}
   }
 }
