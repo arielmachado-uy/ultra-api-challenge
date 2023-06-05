@@ -11,7 +11,9 @@
     "cy:ci": "cypress run --headless --record --key 45766e1e-bc5a-4126-9b2a-a598a0479b64"
   },
   "devDependencies": {
+    "@types/cypress-dotenv": "^2.0.0",
     "cypress": "^12.13.0",
+    "cypress-dotenv": "^2.0.0",
     "typescript": "^5.1.3"
   },
   "dependencies": {
