@@ -30,7 +30,7 @@ This project is **ONLY** about the `extra bonus` step where I implemented an aut
 <br>
 
 **Tech Stack**
-- The test case was automated using Cypress and Typescript
+- The test cases were automated using Cypress and Typescript
 - Current project can be found here: https://github.com/arielmachado-uy/ultra-api-challenge
 
 <br>
