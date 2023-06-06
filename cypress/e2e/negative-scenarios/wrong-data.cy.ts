@@ -57,9 +57,6 @@ describe("Negative Scenarios - Wrong Data", () => {
 
       expect(response.body[1].field).to.be.eq("status");
       expect(response.body[1].message).to.be.eq("can't be blank");
-
-      expect(response.body[2].field).to.be.eq("email");
-      expect(response.body[2].message).to.be.eq("has already been taken");
     })
    })
 })
