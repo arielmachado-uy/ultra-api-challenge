@@ -54,6 +54,9 @@ Project setup
 2. Checkout the code from the provided url (https://github.com/arielmachado-uy/ultra-web-challenge)
 3. Open the project on VS Code
 4. Open the terminal and run `yarn` in order to install needed dependencies
+5. At the root of your project create an `.env` file with the following value
+      - API_TOKEN=75782cb2abeba44a7d1a9f56c587fcadcf617badd6eccceb03ce9c229dbf45b3
+      - This is a public value and that is why it is shared here, otherwise it should be shared using a secure link
 
 <br>
 Project execution
