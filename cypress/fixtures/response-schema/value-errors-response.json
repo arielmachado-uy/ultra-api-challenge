@@ -1,35 +1,29 @@
 {
-    "type": "array",
-    "items": [
-      {
-        "type": "object",
-        "properties": {
-          "field": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string"
         },
-        "required": [
-          "field",
-          "message"
-        ]
+        "message": {
+          "type": "string"
+        }
       },
-      {
-        "type": "object",
-        "properties": {
-          "field": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
+      "required": ["field", "message"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string"
         },
-        "required": [
-          "field",
-          "message"
-        ]
-      }
-    ]
-  }
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["field", "message"]
+    }
+  ]
+}

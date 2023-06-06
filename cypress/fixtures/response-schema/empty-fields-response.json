@@ -11,10 +11,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "field",
-        "message"
-      ]
+      "required": ["field", "message"]
     },
     {
       "type": "object",
@@ -26,10 +23,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "field",
-        "message"
-      ]
+      "required": ["field", "message"]
     },
     {
       "type": "object",
@@ -41,10 +35,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "field",
-        "message"
-      ]
+      "required": ["field", "message"]
     },
     {
       "type": "object",
@@ -56,10 +47,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "field",
-        "message"
-      ]
+      "required": ["field", "message"]
     }
   ]
 }

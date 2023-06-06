@@ -1,28 +1,21 @@
 {
   "type": "object",
   "properties": {
-  "id": {
+    "id": {
       "type": "integer"
-  },
-  "name": {
+    },
+    "name": {
       "type": "string"
-  },
-  "email": {
+    },
+    "email": {
       "type": "string"
-  },
-  "gender": {
+    },
+    "gender": {
       "type": "string"
-  },
-  "status": {
+    },
+    "status": {
       "type": "string"
-  }
-},
-"required": 
-  [
-      "id",
-      "name",
-      "email",
-      "gender",
-      "status"
-  ]
+    }
+  },
+  "required": ["id", "name", "email", "gender", "status"]
 }
