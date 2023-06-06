@@ -1,4 +1,4 @@
-# Ultra.io : API Challenge
+# Ultra.io : API Challenge - Extra bonus
 
 ## Project: Developing an automated test suite for a dummy API
 <br>
