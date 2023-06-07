@@ -51,7 +51,7 @@ Project setup
 1. Make sure you have Node installed on your system before proceeding with the project (based on your OS)
    - https://nodejs.org/en/download
    - https://formulae.brew.sh/formula/node
-2. Checkout the code from the provided url (https://github.com/arielmachado-uy/ultra-web-challenge)
+2. Checkout the code from the provided url (https://github.com/arielmachado-uy/ultra-api-challenge)
 3. Open the project on VS Code
 4. Open the terminal and run `yarn` in order to install needed dependencies
 5. At the root of your project create an `.env` file with the following value
